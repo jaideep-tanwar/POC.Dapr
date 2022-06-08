@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  azure:
+    image: ${DOCKER_REGISTRY-}azure
+    build:
+      context: .
+      dockerfile: Azure/Dockerfile
+    ports:
+      - "5138"
+
+  azure-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "azure", "-app-port", "80" ]
+    depends_on:
+      - azure
+    network_mode: "service:azure"
+
+  poc:
+    image: ${DOCKER_REGISTRY-}poc
+    build:
+      context: .
+      dockerfile: POC/Dockerfile
+    ports:
+      - "7009"
+
+  poc-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "poc", "-app-port", "80" ]
+    depends_on:
+      - poc
+    network_mode: "service:poc"
+
