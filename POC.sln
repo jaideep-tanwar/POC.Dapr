@@ -13,6 +13,17 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Demo\Demo.csproj", "{FCECC55D-C0E9-4960-9E69-6AA8B7583F93}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{98F2DBD4-F93C-46E8-89A0-B6AF6C1C8177}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{A28C686D-F4BC-4A3C-AF7E-8E0CF6708542}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\jaideep.tanwar\.dapr\components\binding.yaml = C:\Users\jaideep.tanwar\.dapr\components\binding.yaml
+		C:\Users\jaideep.tanwar\.dapr\components\local-secret-store.yaml = C:\Users\jaideep.tanwar\.dapr\components\local-secret-store.yaml
+		C:\Users\jaideep.tanwar\.dapr\components\pubsub.yaml = C:\Users\jaideep.tanwar\.dapr\components\pubsub.yaml
+		C:\Users\jaideep.tanwar\.dapr\components\statestore.yaml = C:\Users\jaideep.tanwar\.dapr\components\statestore.yaml
+		C:\Users\jaideep.tanwar\.dapr\components\statestorecosmodb.yaml = C:\Users\jaideep.tanwar\.dapr\components\statestorecosmodb.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +53,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A28C686D-F4BC-4A3C-AF7E-8E0CF6708542} = {98F2DBD4-F93C-46E8-89A0-B6AF6C1C8177}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1172C4B-7BA1-4F41-9218-20607CD3A813}
