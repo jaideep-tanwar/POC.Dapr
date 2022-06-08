@@ -23,7 +23,8 @@ export class FetchDataComponent implements OnInit {
     
     // this.selectedFile=File;
     
-    http.get<WeatherForecast[]>(baseUrl + 'azure').subscribe(result => {
+    http.get<WeatherForecast[]>("http://localhost:5320/" + 'demo/weathernew').subscribe(result => {
+      debugger;
       this.forecasts = result;
     }, error => console.error(error));
   }
@@ -67,7 +68,7 @@ export class FetchDataComponent implements OnInit {
     formData.append('profilePicUrl', this.createForm.getRawValue().profilePicUrl);
     formData.append('myFile', this.fileToUpload);
     console.log(this.createForm.getRawValue());
-    this.httpClient.post<User>(this.baseurl + 'azure/create', formData,{
+    this.httpClient.post<User>(this.baseurl + 'demo/create', formData,{
       headers : new HttpHeaders()}).subscribe(data => {
       // this.postId = data.id;
       console.log("called")
