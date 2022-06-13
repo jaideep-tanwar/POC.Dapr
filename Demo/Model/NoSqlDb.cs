@@ -1,6 +1,6 @@
 ﻿namespace Demo.Model
 {
-    public class PublishCosmosDb
+    public class NoSqlDb
     {        public int Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

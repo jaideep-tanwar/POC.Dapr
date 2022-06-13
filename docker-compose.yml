@@ -31,3 +31,10 @@ services:
       - poc
     network_mode: "service:poc"
 
+
+  demo:
+    image: ${DOCKER_REGISTRY-}demo
+    build:
+      context: .
+      dockerfile: Demo/Dockerfile
+

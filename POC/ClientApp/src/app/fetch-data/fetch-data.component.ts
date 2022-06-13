@@ -23,13 +23,21 @@ export class FetchDataComponent implements OnInit {
     
     // this.selectedFile=File;
     
-    http.get<WeatherForecast[]>("http://localhost:5320/" + 'demo/weathernew').subscribe(result => {
-      debugger;
-      this.forecasts = result;
-    }, error => console.error(error));
+    
   }
 
   ngOnInit(): void {
+
+    this.httpClient.get<WeatherForecast[]>("http://localhost:5320/" + 'demo/weathernew').subscribe(result => {
+      debugger;
+      this.forecasts = result;
+    }, error => console.error(error));
+
+    this.httpClient.get("http://localhost:5320/" + 'demo/secret').subscribe(result => {
+      debugger;
+      var forecasts = result;
+    }, error => console.error(error));
+
     this.createForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],

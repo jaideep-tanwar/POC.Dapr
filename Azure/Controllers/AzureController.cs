@@ -94,7 +94,7 @@ namespace Azure.Controllers
             };
 
             var httpClient1 = DaprClient.CreateInvokeHttpClient();
-            await httpClient1.PostAsJsonAsync("http://demo/azure/update", publishModel);
+            await httpClient1.PostAsJsonAsync("http://demo/demo/update", publishModel);
 
 
             Console.WriteLine("binding success");
