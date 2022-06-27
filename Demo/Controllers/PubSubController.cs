@@ -22,16 +22,24 @@ namespace Demo.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] Sample sample)
         {
-            await _daprClient.PublishEventAsync<Sample>("pubsub", "sample", sample);
-           return Ok();
+            //await _daprClient.InvokeBindingAsync("pubsub", "create", "Heelo From Shankar");
+            Console.WriteLine("publishing topics...");
+            await _daprClient.PublishEventAsync<Sample>("pubsub", "sampletopic", sample);
+            Console.WriteLine("Published sampletopic");
+            //await _daprClient.PublishEventAsync<Sample>("pubsub", "sampletopic2", sample);
+            //Console.WriteLine("Published sampletopic 2");
+            //await _daprClient.PublishEventAsync<Sample>("pubsub", "sampletopic3", sample);
+            //Console.WriteLine("Published sampletopic 3");
+
+
+            return Ok();
         }
-        [Topic("pubsub", "sample")]
+        [Topic("pubsub", "sampletopic")]
         [HttpPost("Subscribe")]
         public async Task<IActionResult> Subscribe(Sample sample)
         {
-            Console.WriteLine(sample.Name);
+            Console.WriteLine("Subscribe sampletopic");
             return Ok(sample);
         }
-      
     }
 }
