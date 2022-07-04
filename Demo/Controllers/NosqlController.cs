@@ -11,7 +11,7 @@ namespace Demo.Controllers
     public class NosqlController : ControllerBase
     {
         private readonly DaprClient _daprClient;
-        const string cosmosDbStore = "statestorecosmodb";
+        const string statestorenosql = "statestorenosql";
 
         public NosqlController(DaprClient daprClient)
         {
@@ -23,8 +23,9 @@ namespace Demo.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            string json = @"{""filter"": { ""EQ"": { ""firstName"": ""Testing"" } } }";
-            var data =  await _daprClient.QueryStateAsync<Nosql>(cosmosDbStore,json);
+            string json = @"{""filter"": { ""EQ"": { ""firstName"": ""Nothing"" } } }";
+            //string json = @"{""sort"": [{""key"": ""firstName"",""order"": ""DESC"" }]}";
+            var data =  await _daprClient.QueryStateAsync<Nosql>(statestorenosql, json);
             return Ok(data);
         }
 
@@ -35,7 +36,7 @@ namespace Demo.Controllers
             Nosql data = null;
             try
             {
-                 data = await _daprClient.GetStateAsync<Nosql>(cosmosDbStore, id.ToString());
+                 data = await _daprClient.GetStateAsync<Nosql>(statestorenosql, id.ToString());
             }
             catch (Exception ex)
             {
@@ -59,7 +60,7 @@ namespace Demo.Controllers
             {
                 try
                 {
-                    await _daprClient.SaveStateAsync<Nosql>(cosmosDbStore, nosql.Id.ToString(), nosql);
+                    await _daprClient.SaveStateAsync<Nosql>(statestorenosql, nosql.Id.ToString(), nosql);
                 }
                 catch (Exception ex)
                 {
@@ -78,7 +79,7 @@ namespace Demo.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromForm] Nosql nosql)
         {
-            var data = await _daprClient.GetStateEntryAsync<Nosql>(cosmosDbStore, id.ToString());
+            var data = await _daprClient.GetStateEntryAsync<Nosql>(statestorenosql, id.ToString());
             var cosmosdata = new Nosql() { Id = id, FirstName = nosql.FirstName, LastName = nosql.LastName };
             if (data.Value != null)
             {
@@ -96,7 +97,7 @@ namespace Demo.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _daprClient.DeleteStateAsync(cosmosDbStore, id.ToString());
+            await _daprClient.DeleteStateAsync(statestorenosql, id.ToString());
 
             return Ok("Data Successfully Deleted By Id" + " " + id);
         }

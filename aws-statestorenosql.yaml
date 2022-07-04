@@ -1,0 +1,17 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestorecosmodb
+ #namespace: production namespace will be option
+spec:
+  type: state.aws.dynamodb
+  version: v1
+  metadata:
+  - name: table
+    value: ""
+  - name: accessKey
+    value: "" 
+  - name: secretKey
+    value: ""
+  - name: region
+    value: "" # Optional

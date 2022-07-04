@@ -24,7 +24,7 @@ namespace Azure.Controllers
         private readonly DaprClient _daprClient;
         private readonly ILogger<AzureController> _logger;
         const string storeName = "statestore";
-        const string cosmosDbStore = "statestorecosmodb";
+        const string statestorenosql = "statestorenosql";
         private readonly IAzureService _azureService;
         //public dynamic ViewBag { get; set; }
 
@@ -143,7 +143,7 @@ namespace Azure.Controllers
         //    {
         //        //var state1 = await _daprClient.GetStateEntryAsync<string>(storeName, id.ToString());
 
-        //        var state = await _daprClient.GetStateEntryAsync<PublishModel>(cosmosDbStore, (id+1).ToString());
+        //        var state = await _daprClient.GetStateEntryAsync<PublishModel>(statestorenosql, (id+1).ToString());
         //        state.Value = publishModel;
         //        await state.SaveAsync();
         //        Console.WriteLine("update cosmosDb running");

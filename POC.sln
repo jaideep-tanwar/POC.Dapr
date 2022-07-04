@@ -15,13 +15,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Demo\Demo.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{98F2DBD4-F93C-46E8-89A0-B6AF6C1C8177}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{A28C686D-F4BC-4A3C-AF7E-8E0CF6708542}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local-components", "local-components", "{A28C686D-F4BC-4A3C-AF7E-8E0CF6708542}"
 	ProjectSection(SolutionItems) = preProject
-		C:\Users\jaideep.tanwar\.dapr\components\binding.yaml = C:\Users\jaideep.tanwar\.dapr\components\binding.yaml
-		C:\Users\jaideep.tanwar\.dapr\components\local-secret-store.yaml = C:\Users\jaideep.tanwar\.dapr\components\local-secret-store.yaml
-		C:\Users\jaideep.tanwar\.dapr\components\pubsub.yaml = C:\Users\jaideep.tanwar\.dapr\components\pubsub.yaml
-		C:\Users\jaideep.tanwar\.dapr\components\statestore.yaml = C:\Users\jaideep.tanwar\.dapr\components\statestore.yaml
-		C:\Users\jaideep.tanwar\.dapr\components\statestorecosmodb.yaml = C:\Users\jaideep.tanwar\.dapr\components\statestorecosmodb.yaml
+		secretstore.yaml = secretstore.yaml
+		pubsub.yaml = pubsub.yaml
+		statestore.yaml = statestore.yaml
+		statestorenosql.yaml = statestorenosql.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure-components", "Azure-components", "{BBB620B3-6A9C-40A3-8908-EBF2A37AA56B}"
+	ProjectSection(SolutionItems) = preProject
+		az-statestore.yaml = az-statestore.yaml
+		az-pubsub.yaml = az-pubsub.yaml
+		az-secretstore .yaml = az-secretstore .yaml
+		az-statestorenosql.yaml = az-statestorenosql.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AWS-components", "AWS-components", "{83617943-5AA6-4288-BC82-54D0AEC887FD}"
+	ProjectSection(SolutionItems) = preProject
+		aws-secretstore.yaml = aws-secretstore.yaml
+		aws-pubsub.yaml = aws-pubsub.yaml
+		aws-statestorenosql.yaml = aws-statestorenosql.yaml
 	EndProjectSection
 EndProject
 Global
@@ -56,6 +70,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A28C686D-F4BC-4A3C-AF7E-8E0CF6708542} = {98F2DBD4-F93C-46E8-89A0-B6AF6C1C8177}
+		{BBB620B3-6A9C-40A3-8908-EBF2A37AA56B} = {98F2DBD4-F93C-46E8-89A0-B6AF6C1C8177}
+		{83617943-5AA6-4288-BC82-54D0AEC887FD} = {98F2DBD4-F93C-46E8-89A0-B6AF6C1C8177}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1172C4B-7BA1-4F41-9218-20607CD3A813}

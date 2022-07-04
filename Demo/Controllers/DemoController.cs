@@ -23,7 +23,7 @@ namespace Demo.Controllers
         private readonly DaprClient _daprClient;
         private readonly ILogger<DemoController> _logger;
         const string storeName = "statestore";
-        const string cosmosDbStore = "statestorecosmodb";
+        const string statestorenosql = "statestorenosql";
         const string DAPR_SECRET_STORE = "localsecretstore";
         const string SECRET_NAME = "secretPicUrl";
         //public dynamic ViewBag { get; set; }
@@ -67,7 +67,7 @@ namespace Demo.Controllers
         [HttpGet("cosmosdb/{id:int}")]
         public async Task<IActionResult> GetCosmosDbById(int id)
         {
-            var data = await _daprClient.GetStateAsync<NoSqlDb>(cosmosDbStore, id.ToString());
+            var data = await _daprClient.GetStateAsync<NoSqlDb>(statestorenosql, id.ToString());
             Console.WriteLine("Get Cosmos Db");
             return Ok(data);
         }
@@ -96,8 +96,8 @@ namespace Demo.Controllers
             //ms.Position = 0;
             user.ImageBytes = ms.ToArray();
             var imageBytesURL = Convert.ToBase64String(user.ImageBytes);
-            Image image = Image.FromStream(ms, true, true) ;
-            
+            Image image = Image.FromStream(ms, true, true);
+
             // Start Save image in local folder
 
             string currentDirectory = Directory.GetCurrentDirectory();
@@ -147,7 +147,7 @@ namespace Demo.Controllers
             };
 
 
-            await _daprClient.SaveStateAsync<NoSqlDb>(cosmosDbStore, (noSqlDb.Id).ToString(), noSqlDb);
+            await _daprClient.SaveStateAsync<NoSqlDb>(statestorenosql, (noSqlDb.Id).ToString(), noSqlDb);
 
             PublishModel publishModel = new PublishModel()
             {

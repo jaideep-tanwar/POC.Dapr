@@ -1,0 +1,15 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore
+ #namespace: production namespace will be option
+spec:
+  type: state.azure.blobstorage
+  version: v1
+  metadata:
+  - name: accountName
+    value: ""
+  - name: accountKey
+    value: ""
+  - name: containerName
+    value: ""

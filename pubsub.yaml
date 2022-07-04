@@ -1,0 +1,13 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub  
+ #namespace: production namespace will be option
+spec:
+  type: pubsub.redis
+  version: v1
+  metadata:
+  - name: redisHost
+    value: # host will be local port of redis localhost:6379
+  - name: redisPassword
+    value: ""
